@@ -84,18 +84,19 @@
     <h1>注册</h1>
     <form  name="registerForm">
       <p>用户名</p>
-      <input type="text" id="username" placeholder="请输入用户名(只能输入6-20个字母、数字、下划线)">
+      <input type="text" id="username" name="username" placeholder="请输入用户名(只能输入6-20个字母、数字、下划线)">
       <p>邮箱</p>
-      <input type="text" id="email" placeholder="请输入邮箱">
+      <input type="text" id="email" name="email" placeholder="请输入邮箱">
       <p>密码</p>
-      <input type="password" name="" id="password" placeholder="请输入密码(包含字母、数字、下划线，6-16位)">
+      <input type="password" name="pass" id="password" placeholder="请输入密码(包含字母、数字、下划线，6-16位)">
       <p>确认密码</p>
-      <input type="password" id="c" name="" placeholder="请再次输入密码(确认密码必须与密码一致)">
+      <input type="password" id="c" name="cpass" placeholder="请再次输入密码(确认密码必须与密码一致)">
       <input type="submit" name="" value="注册" id="io">
       <a href="#">已有账号？请登录</a>
     </form>
   </div>
 </body>
+
 	<script>
 		window.onload = function() {
 			/*
@@ -130,6 +131,7 @@
 					* 必须以字母开头，
 					* 长度6-20
 				*/
+				if(getCookie("name")!=""&&getCookie("mail")!=""&&getCookie("pass")!="")
 				var username = document.getElementById('username').value;
 				if(!/^[a-z][\w\-]{5,19}$/.test(username)) {
 					alert('您输入的用户名不合法');
@@ -170,6 +172,10 @@
 					alert('两次输入密码不一致');
 					return false;
 				}
+				setCookie("name",username,365);
+				setCookie("mail",email,365);
+				setCookie("pass",password,365);
+				alert("登陆成功！！");
  
 			}
 		}
