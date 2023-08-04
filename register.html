@@ -7,7 +7,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: url(background.jpg);
+      background-color:khaki;
       background-size: cover;
       font-family: sans-serif;
     }
@@ -15,7 +15,7 @@
     .registerbox {
       width: 320px;
       height: 720px;
-      background: #000;
+      background: lightskyblue;
       color: #fff;
       top: 50%;
       left: 50%;
@@ -23,6 +23,7 @@
       transform: translate(-50%, -50%);
       box-sizing: border-box;
       padding: 70px 30px;
+      border-radius: 20%;
     }
     
     h1 {
@@ -80,7 +81,7 @@
 <body>
   <div class="registerbox">
     <h1>注册</h1>
-    <form>
+    <form  name="registerForm" onsubmit="return validateForm()">
       <p>用户名</p>
       <input type="text" name="" placeholder="请输入用户名">
       <p>邮箱</p>
@@ -94,5 +95,59 @@
     </form>
   </div>
 </body>
-
+<script scr="cookie.js"></script>
+<script>
+  function validateForm() {
+  	// Get the input values
+  	var username = document.forms['registerForm']['username'].value;
+  	var email = document.forms['registerForm']['email'].value;
+  	var password = document.forms['registerForm']['password'].value;
+  	var confirmPassword = document.forms['registerForm']['confirm-password'].value;
+  
+  	// Validate the username: required, must be at least 6 characters long
+  	if (username == "") {
+  		alert("Please enter a username.");
+  		return false;
+  	} else if (username.length < 6) {
+  		alert("Username must be at least 6 characters long.");
+  		return false;
+  	}
+  
+  	// Validate the email: required, must be a valid email address
+  	if (email == "") {
+  		alert("Please enter your email address.");
+  		return false;
+  	} else if (!validateEmail(email)) {
+  		alert("Please enter a valid email address.");
+  		return false;
+  	}
+  
+  	// Validate the password: required, must be at least 8 characters long
+  	if (password == "") {
+  		alert("Please enter a password.");
+  		return false;
+  	} else if (password.length < 8) {
+  		alert("Password must be at least 8 characters long.");
+  		return false;
+  	}
+  
+  	// Validate the confirm password: required, must match the password field
+  	if (confirmPassword == "") {
+  		alert("Please confirm your password.");
+  		return false;
+  	} else if (confirmPassword != password) {
+  		alert("Passwords do not match.");
+  		return false;
+  	}
+  
+  	// If all inputs are valid, return true
+  	return true;
+  }
+  
+  function validateEmail(email) {
+  	// Using a regular expression to validate the email format
+  	var re = /\S+@\S+\.\S+/;
+  	return re.test(email);
+  }
+</script>
 </html>
