@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -30,7 +31,7 @@
       margin: 0;
       padding: 0 0 20px;
       text-align: center;
-      font-size: 22px;
+      font-size: 40px;
     }
     
     p {
@@ -81,7 +82,7 @@
 <body>
   <div class="registerbox">
     <h1>注册</h1>
-    <form  name="registerForm" onsubmit="return validateForm()">
+    <form  name="registerForm">
       <p>用户名</p>
       <input type="text" id="username" placeholder="请输入用户名(只能输入6-20个字母、数字、下划线)">
       <p>邮箱</p>
@@ -95,9 +96,25 @@
     </form>
   </div>
 </body>
-<script scr="cookie.js"></script>
 	<script>
 		window.onload = function() {
+			/*
+				表单提交是默认行为
+					* preventDefault()
+					* returnValue = false;
+				知识点：
+					* 正则表达式的方法
+						* reg.test(str)：用正则表达式reg验证str是否合法
+						* exec()	等同于 match
+					* 分组：()
+						* 引用
+							* 正则内引用：\n    \1,\2
+							* 正则外引用：$n		$1,$2
+					* 非：
+						* ^
+						* [^\d]
+					* 表示所有字符：[\s\S],[\w\W],[\d\D]
+			 */
 			var btnCheck = document.getElementById('io');
 			btnCheck.onclick = function(e) {
 				/*
@@ -121,6 +138,8 @@
 					// return;
 					return false;
 				}
+ 
+
 				/*
 					电子邮件
 						jinrong.xie@qq.com
@@ -135,10 +154,7 @@
 					alert('邮箱格式不合法');
 					return false;
 				}
-				/*
-					手机号码
-			
-				/*
+ /*
 					密码  
 						长度6-20 
 						不能包含空格
@@ -154,5 +170,8 @@
 					alert('两次输入密码不一致');
 					return false;
 				}
+ 
+			}
+		}
 	</script>
 </html>
