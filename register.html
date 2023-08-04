@@ -83,71 +83,76 @@
     <h1>注册</h1>
     <form  name="registerForm" onsubmit="return validateForm()">
       <p>用户名</p>
-      <input type="text" name="" placeholder="请输入用户名">
+      <input type="text" id="username" placeholder="请输入用户名">
       <p>邮箱</p>
-      <input type="text" name="" placeholder="请输入邮箱">
+      <input type="text" id="email" placeholder="请输入邮箱">
       <p>密码</p>
-      <input type="password" name="" placeholder="请输入密码">
+      <input type="password" name="" id="password" placeholder="请输入密码">
       <p>确认密码</p>
-      <input type="password" name="" placeholder="请再次输入密码">
-      <input type="submit" name="" value="注册">
+      <input type="password" id="c" name="" placeholder="请再次输入密码">
+      <input type="submit" name="" value="注册" id="io">
       <a href="#">已有账号？请登录</a>
     </form>
   </div>
 </body>
 <script scr="cookie.js"></script>
-<script>
-  function validateForm() {
-  	// Get the input values
-  	var username = document.forms['registerForm']['username'].value;
-  	var email = document.forms['registerForm']['email'].value;
-  	var password = document.forms['registerForm']['password'].value;
-  	var confirmPassword = document.forms['registerForm']['confirm-password'].value;
-  
-  	// Validate the username: required, must be at least 6 characters long
-  	if (username == "") {
-  		alert("Please enter a username.");
-  		return false;
-  	} else if (username.length < 6) {
-  		alert("Username must be at least 6 characters long.");
-  		return false;
-  	}
-  
-  	// Validate the email: required, must be a valid email address
-  	if (email == "") {
-  		alert("Please enter your email address.");
-  		return false;
-  	} else if (!validateEmail(email)) {
-  		alert("Please enter a valid email address.");
-  		return false;
-  	}
-  
-  	// Validate the password: required, must be at least 8 characters long
-  	if (password == "") {
-  		alert("Please enter a password.");
-  		return false;
-  	} else if (password.length < 8) {
-  		alert("Password must be at least 8 characters long.");
-  		return false;
-  	}
-  
-  	// Validate the confirm password: required, must match the password field
-  	if (confirmPassword == "") {
-  		alert("Please confirm your password.");
-  		return false;
-  	} else if (confirmPassword != password) {
-  		alert("Passwords do not match.");
-  		return false;
-  	}
-  
-  	// If all inputs are valid, return true
-  	return true;
-  }
-  
-  function validateEmail(email) {
-  	// Using a regular expression to validate the email format
-  	var re = /\S+@\S+\.\S+/;
-  	return re.test(email);
-  }
-</script>
+	<script>
+		window.onload = function() {
+			var btnCheck = document.getElementById('lo');
+			btnCheck.onclick = function(e) {
+				/*
+					如果以下表单有一个不符合，则不允许提交表单
+				 */
+ 
+				e = e || window.event;
+ 
+				/*
+				验证账号
+					* 不能为空，
+					* 不能使用特殊字符（数字、字母、下划线、横杠），
+					* 必须以字母开头，
+					* 长度6-20
+				*/
+				var username = document.getElementById('username').value;
+				if(!/^[a-z][\w\-]{5,19}$/.test(username)) {
+					alert('您输入的用户名不合法');
+ 
+					// e.preventDefault();
+					// return;
+					return false;
+				}
+				/*
+					电子邮件
+						jinrong.xie@qq.com
+						123@qq.com
+						x_x@163.com
+						x-x@a-r.com.cn
+						x.x@laoxie.com
+						邮箱用户名必须3-30个字符
+				 */
+				var email = document.getElementById('email').value;
+				if(!/^[a-z0-9][\w\-\.]{2,29}@[a-z0-9\-]{2,67}(\.[a-z\u2E80-\u9FFF]{2,6})+$/.test(email)) {
+					alert('邮箱格式不合法');
+					return false;
+				}
+				/*
+					手机号码
+			
+				/*
+					密码  
+						长度6-20 
+						不能包含空格
+				 */
+				var password = document.getElementById('password').value;
+				if(!/^\S{6,20}$/.test(password)) {
+					alert('密码不能有空格');
+					return false;
+				}
+ 
+				var confirm_pwd = document.getElementById('c').value;
+				if(confirm_pwd != password) {
+					alert('两次输入密码不一致');
+					return false;
+				}
+	</script>
 </html>
