@@ -83,13 +83,13 @@
     <h1>注册</h1>
     <form  name="registerForm" onsubmit="return validateForm()">
       <p>用户名</p>
-      <input type="text" id="username" placeholder="请输入用户名">
+      <input type="text" id="username" placeholder="请输入用户名(只能输入6-20个字母、数字、下划线)">
       <p>邮箱</p>
       <input type="text" id="email" placeholder="请输入邮箱">
       <p>密码</p>
-      <input type="password" name="" id="password" placeholder="请输入密码">
+      <input type="password" name="" id="password" placeholder="请输入密码(包含字母、数字、下划线，6-16位)">
       <p>确认密码</p>
-      <input type="password" id="c" name="" placeholder="请再次输入密码">
+      <input type="password" id="c" name="" placeholder="请再次输入密码(确认密码必须与密码一致)">
       <input type="submit" name="" value="注册" id="io">
       <a href="#">已有账号？请登录</a>
     </form>
@@ -98,7 +98,7 @@
 <script scr="cookie.js"></script>
 	<script>
 		window.onload = function() {
-			var btnCheck = document.getElementById('lo');
+			var btnCheck = document.getElementById('io');
 			btnCheck.onclick = function(e) {
 				/*
 					如果以下表单有一个不符合，则不允许提交表单
@@ -145,7 +145,7 @@
 				 */
 				var password = document.getElementById('password').value;
 				if(!/^\S{6,20}$/.test(password)) {
-					alert('密码不能有空格');
+					alert('密码不合法');
 					return false;
 				}
  
