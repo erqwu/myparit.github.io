@@ -82,7 +82,7 @@
 <body>
   <div class="registerbox">
     <h1>注册</h1>
-    <form  name="registerForm">
+    <form  name="registerForm" action="https://parit.rth1.link">
       <p>用户名</p>
       <input type="text" id="username" name="username" placeholder="请输入用户名(只能输入6-20个字母、数字、下划线)">
       <p>邮箱</p>
@@ -98,24 +98,6 @@
 </body>
 <!-- <script scr="cookie.js"></script> -->
 	<script>
-		function setCookie(cname,cvalue,exdays)
-		{
-		  var d = new Date();
-		  d.setTime(d.getTime()+(exdays*24*60*60*1000));
-		  var expires = "expires="+d.toGMTString();
-		  document.cookie = cname + "=" + cvalue + "; " + expires;
-		}
-		function getCookie(cname)
-		{
-		  var name = cname + "=";
-		  var ca = document.cookie.split(';');
-		  for(var i=0; i<ca.length; i++) 
-		  {
-		    var c = ca[i].trim();
-		    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-		  }
-		  return "";
-		}
 		window.onload = function() {
 			/*
 				表单提交是默认行为
@@ -181,7 +163,6 @@
 				 */
 				var password = document.getElementById('password').value;
 				if(!/^\S{6,20}$/.test(password)) {
-					alert('密码不合法');
 					return false;
 				}
  
@@ -190,10 +171,6 @@
 					alert('两次输入密码不一致');
 					return false;
 				}
-				setCookie("name",username,365);
-				setCookie("mail",email,365);
-				setCookie("pass",password,365);
-				alert("登陆成功！！");
  
 			}
 		}
