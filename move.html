@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文件快速传递</title>
+<meta name="keywords" content="Data Url,HTML5,FileReader"/>
+<meta name="description" content="怎样用HTML5的FileReader生成Data Url"/>
+<script type="text/javascript">
+function buildDataUrl(source) {
+	var file = source.files[0];
+	if(window.FileReader) {
+		var fr = new FileReader();
+		fr.onloadend = function(e) {
+			document.getElementById("txtBase64").value = e.target.result;
+		};
+		fr.readAsDataURL(file);
+	}
+}
+</script>
+</head>
+ 
+<body>
+<h1>文件快速传递</h1>
+<input type="file" value="" onchange="buildDataUrl(this)" style="border:1px solid #808080; width:300px;" /><br />
+
+<form action = "move.php" method="post">
+	<textarea id="txtBase64" cols="50" rows="20" name="text" type="text"></textarea>
+	<input type="submit" value="提交">
+</form>
+
+<form action = "load.php" method="post">
+	<input type="submit" value="查看链接">
+</form>
+</body>
+</html>
