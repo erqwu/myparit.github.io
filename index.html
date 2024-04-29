@@ -1,36 +1,118 @@
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>文件快速传递</title>
-<meta name="keywords" content="Data Url,HTML5,FileReader"/>
-<meta name="description" content="怎样用HTML5的FileReader生成Data Url"/>
-<script type="text/javascript">
-function buildDataUrl(source) {
-	var file = source.files[0];
-	if(window.FileReader) {
-		var fr = new FileReader();
-		fr.onloadend = function(e) {
-			document.getElementById("txtBase64").value = e.target.result;
-		};
-		fr.readAsDataURL(file);
-	}
-}
-</script>
+	<meta charset="utf-8">
+	<title>PARIT</title>
+	<style>
+		*{
+			padding:0px;
+			margin:0px;
+		}
+		html{
+			background-color:lightyellow;
+		}
+		a{
+			color:#333;
+			text-decoration: none;
+		}
+		.nav{
+			margin:auto;
+			height: 40px;
+			background-color:lightgray;
+			padding-left:310px;
+		}
+		.nav ul li{
+			margin:auto;
+			float: left;
+			width: 19.11111111%;
+			height: 40px;
+			overflow: hidden;
+		}
+		.nav ul li a{
+			padding:0 auto;
+			display: block;
+			height: 40px;
+			background: lightblue;
+			color: #333;
+			text-align: center;
+			line-height: 40px;
+			border:2px solid #b2a9a9;
+		}
+		.nav ul li .img{
+			width:130px;
+			height:40px;
+		}
+		.nav ul li a:hover,.nav ul li.cur a{
+			color:#eff;
+			background-color:orange;
+		}
+		.logo{
+			text-indent:-999999px;
+		}
+		.inner div .w ul{
+			width:300px;
+			margin:5px auto;
+		}
+		.inner .w{
+			margin:0 auto;
+			text-align:center;
+			background-color:lightblue;
+		}
+		body{
+			width:100vw;
+		}
+		.inner{
+			margin:20px auto;
+			width:80%;
+		}
+		.inner .w ul li a:hover{
+			color:blue;
+		}
+		.inner .w ul{
+			background-color:snow;
+			border:2px solid #b2a9a9;
+		}
+		.inner .w ul li{
+			text-align:center;
+		}
+		.inner .def a{
+			font-size:30px;
+			display:block;
+			margin:30px auto;
+			line-height:60px;
+			height:60px;
+			text-align:center;
+			background-color:lightblue;
+		}
+	</style>
 </head>
- 
 <body>
-<h1>文件快速传递</h1>
-<input type="file" value="" onchange="buildDataUrl(this)" style="border:1px solid #808080; width:300px;" /><br />
-
-<form action = "move.php" method="post">
-	<textarea id="txtBase64" cols="50" rows="20" name="text" type="text"></textarea>
-	<input type="submit" value="提交">
-</form>
-
-<form action = "load.php" method="post">
-	<input type="submit" value="查看链接">
-</form>
+	<header class="nav">
+		<ul>
+			<li class="cur"><a href="https://parit.rth5.com/">首页</a></li>
+			<li><a href="https://parit.rth5.com/py/py.html">python入门课</a></li>
+			<li><a href="https://blys.neocities.org">快站</a></li>
+			<li><a href="https://myhywel.rth7.com/so.html">索</a></li>
+			<li><a href="https://myhywel.rth7.com/html5.html">hl</a></li>
+			<li class="img"><h1 class="logo">PARIT</h1></li>
+		</ul>
+	</header>
+	<div class="inner">
+		<div class="w">
+			学习工具栏
+			<ul>
+				<li><a href="https://www.w3school.com.cn/h.asp" target="_blank">w3school</a></li>
+			</ul>
+			<ul>
+				<li><a href="https://vjudge.net" target="_blank">vjudge</a></li>
+			</ul>
+			<ul>
+				<li><a href="https://www.lintcode.com/" target="_blank">lintcode</a></li>
+			</ul>
+		</div>
+		<div class="def">
+			<a href="p.pp.com/mulu.html">手 机 应 用</a>
+		</div>
+	</div>
 </body>
 </html>
